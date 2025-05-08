@@ -31,6 +31,7 @@
             pkgs.zlib
             pkgs.libtool
           ];
+          PIP_NO_BINARY = "xmlsec";
         };
 
       in {
