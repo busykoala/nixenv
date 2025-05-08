@@ -37,12 +37,15 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = additionalPackages;
+
           shellHook = ''
             echo "🧪  Welcome to your dev shell!"
             echo "🔧  Tools included:"
             echo "${pkgs.lib.strings.concatStringsSep "\n" (map (p: "🔹 ${pkgs.lib.getName p}") additionalPackages)}"
           '';
-          inherit (envVars) PKG_CONFIG_PATH PIP_NO_BINARY;
+
+          PIP_NO_BINARY = envVars.PIP_NO_BINARY;
+          PKG_CONFIG_PATH = envVars.PKG_CONFIG_PATH;
         };
       }
     );
