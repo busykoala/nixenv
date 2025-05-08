@@ -42,7 +42,7 @@
             echo "🔧  Tools included:"
             echo "${pkgs.lib.strings.concatStringsSep "\n" (map (p: "🔹 ${pkgs.lib.getName p}") additionalPackages)}"
           '';
-          inherit (envVars) PKG_CONFIG_PATH;
+          inherit (envVars) PKG_CONFIG_PATH PIP_NO_BINARY;
         };
       }
     );
